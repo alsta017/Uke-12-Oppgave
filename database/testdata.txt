@@ -1,0 +1,13 @@
+-- GENERATED with chatpgt
+-- Insert test data into users table
+INSERT INTO `uke12db`.`users` (`username`, `password`, `userscol`) VALUES
+('john_doe', 'password123', 'Some value for user 1'),
+('jane_smith', 'abc123', 'Another value for user 2'),
+('mike_jackson', 'pass456', NULL);
+
+-- Insert test data into tickets table
+INSERT INTO `uke12db`.`tickets` (`title`, `desc`, `email`, `status`, `created`, `userid`) VALUES
+('Bug Report', 'App crashes when clicking on button X.', 'john@example.com', 'Åpen', '2024-03-22 10:00:00', 1),
+('Feature Request', 'Add a new feature to the app.', 'jane@example.com', 'Pågår', '2024-03-22 11:30:00', 2),
+('Technical Issue', 'Cannot login to the system.', 'mike@example.com', 'Lukket', '2024-03-22 09:15:00', 3),
+('General Inquiry', 'Question about billing.', 'john@example.com', 'Åpen', '2024-03-22 12:45:00', 1);
