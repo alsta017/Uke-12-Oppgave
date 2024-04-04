@@ -14,6 +14,10 @@ header{
     justify-content: center;
     align-items: center;
 }
+header h1, header a{
+    color: white;
+    text-decoration: none;
+}
 
 .headermenu{
     width: 100vw;
@@ -80,7 +84,84 @@ main{
     background-color: #2c2c2c;
 }
 
+#newticketform{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+}
+
+#newticketform label{
+    margin: 4px;
+    font-size: 150%;
+}
+
+#newticketform input, #newticketform textarea{
+    margin: 4px;
+    font-size: 150%;
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+    background-color: #1f1f1f;
+    color: white;
+    margin-bottom: 16px;
+    resize: none;
+    width: 95%;
+}
+
+#newticketform textarea{
+    height: 100px;
+}
+
+#lookupForm{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+}
+
+#lookupForm label{
+    margin: 4px;
+    font-size: 150%;
+}
+
+#lookupForm input{
+    margin: 4px;
+    font-size: 150%;
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+    background-color: #1f1f1f;
+    color: white;
+    margin-bottom: 16px;
+    resize: none;
+    width: 95%;
+}
+
+#ticketInfo{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    border-radius: 8px;
+    margin: 8px;
+}
+
+#ticketInfo p, #ticketInfo h2{
+    padding: 8px 16px;
+    margin: 0px;
+}
+
 @font-face {
     font-family: 'Open sans';
-    src: url(src/fonts/OpenSans-Regular.ttf);
+    src: url(/src/font/OpenSans-Regular.ttf);
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hjemmeside</title>
     <link rel="stylesheet" href="/src/css/style.css">
+    <!-- importer htmx --> <script src="/src/htmx/htmx.min.js"></script>
 </head>
 <body>
     <header>
@@ -12,14 +13,14 @@
     </header>
     <div class="headermenu">
         <ul>
-            <li><a href="tickets.php">Tickets</a></li>
+            <li><a href="/tickets">Tickets</a></li>
             <li class="separator">|</li>
-            <li><a href="login.php">Log in</a></li>
+            <li><a href="/login">Log in</a></li>
         </ul>
     </div>
     <main>
-        <button class="button1">New ticket</button>
-        <button class="button1">My tickets</button>
+        <button class="button1" onclick="location.href='/newticket'">New ticket</button>
+        <button class="button1" onclick="location.href='/tickets'">My tickets</button>
     </main>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <script src="/src/htmx/htmx.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/"><h1>Tickets</h1></a>
+    </header>
+    <div class="headermenu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li class="separator">|</li>
+            <li><a href="/login">Log in</a></li>
+        </ul>
+    </div>
+    <main>
+        <div id="successMessage" style="display: none;">
+            <p id="successText"></p>
+        </div>
+
+        <!-- Ticket lookup form -->
+        <form id="lookupForm" onsubmit="lookupTicket(); return false;">
+            <label for="ticketId">Enter Ticket ID:</label>
+            <input type="text" id="ticketId" name="ticketId" required>
+            <button class="button1" type="submit">Lookup Ticket</button>
+        </form>
+        
+        <!-- Display ticket information  -->
+        <div id="ticketInfo"></div>
+    </main>
+    <script src="/src/js/tickets.js"></script>
+</body>
+</html>
