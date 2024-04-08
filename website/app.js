@@ -55,11 +55,57 @@ app.get("/newticket", (req, res) => {
     res.sendFile(__dirname + "/src/html/newticket.html");
 });
 
+app.get("/admin", (req, res) => {
+    res.sendFile(__dirname + "/src/html/admin.html");
+});
+
+app.get("/tickets/all", (req, res) => {
+    connection.query('SELECT * FROM tickets', (err, results) => {
+        if (err) {
+            console.error('Error fetching tickets:', err);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+
+        res.json(results);
+    });
+});
+
+app.get("/ticket/:id/complete", (req, res) => {
+    console.log("Mark as completed endpoint called"); // Add this line for debugging
+
+    const ticketId = req.params.id;
+
+    connection.query('UPDATE tickets SET status = "Closed" WHERE id = ?', ticketId, (err, results) => {
+        if (err) {
+            console.error('Error marking ticket as completed:', err);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+        res.redirect("/admin");
+    });
+});
+
+app.get("/ticket/:id/reopen", (req, res) => {
+    console.log("Reopen ticket endpoint called");
+
+    const ticketId = req.params.id;
+
+    connection.query('UPDATE tickets SET status = "Open" WHERE id = ?', ticketId, (err, results) => {
+        if (err) {
+            console.error('Error reopening ticket:', err);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+        res.redirect("/admin");
+    });
+});
+
 app.post("/newticketcreate", (req, res) => {
     const title = req.body.title;
     const email = req.body.email;
     const description = req.body.description;
-    const status = "Åpen";
+    const status = "Open";
     const created = new Date();
     connection.query('INSERT INTO tickets (title, email, description, status, created) VALUES (?, ?, ?, ?, ?)', [title, email, description, status, created], function (err, results, fields) {
         if (err) {
