@@ -99,6 +99,23 @@ app.get("/ticket/:id/reopen", (req, res) => {
     });
 });
 
+app.post("/login", (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    connection.query('SELECT * FROM users WHERE username = ?', [username], (err, res) => {
+        if (err) {
+            console.error("Error" + err);
+            return;
+        }
+        if (res.length === 0) {
+            console.log("No user")
+            return;
+        } else {
+            
+        }
+    })
+})
+
 app.post("/newticketcreate", (req, res) => {
     const title = req.body.title;
     const email = req.body.email;
@@ -156,4 +173,8 @@ app.get("/ticket/:id/delete", (req, res) => {
         // For instance, a simple confirmation message:
         res.redirect("/admin")
     });
+});
+
+app.get("/minfil", (req, res) => {
+    res.sendFile(path.join(__dirname, 'minfil.js'));
 });
