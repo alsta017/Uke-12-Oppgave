@@ -72,7 +72,6 @@ app.get("/tickets/all", (req, res) => {
 });
 
 app.get("/ticket/:id/complete", (req, res) => {
-    console.log("Mark as completed endpoint called"); // Add this line for debugging
 
     const ticketId = req.params.id;
 
@@ -87,7 +86,6 @@ app.get("/ticket/:id/complete", (req, res) => {
 });
 
 app.get("/ticket/:id/reopen", (req, res) => {
-    console.log("Reopen ticket endpoint called");
 
     const ticketId = req.params.id;
 
@@ -143,5 +141,19 @@ app.post("/ticket/:id", (req, res) => {
 
         // Send ticket information as JSON response
         res.json(ticket);
+    });
+});
+
+app.get("/ticket/:id/delete", (req, res) => {
+    const ticketId = req.params.id;
+    connection.query('DELETE FROM tickets WHERE id = ?', [ticketId], (err, results) => {
+        if (err) {
+            console.error('Error deleting ticket:', err);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+        // You can customize the response based on your preference.
+        // For instance, a simple confirmation message:
+        res.redirect("/admin")
     });
 });
