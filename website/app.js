@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Middleware for parsing application/json
 app.use(bodyParser.json());
 
-var port = 80;
+var port = 3000;
 
 const connection = mysql.createConnection({
     host: "localhost",
