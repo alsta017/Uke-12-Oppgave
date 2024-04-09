@@ -36,11 +36,12 @@ DROP TABLE IF EXISTS `uke12db`.`tickets` ;
 CREATE TABLE IF NOT EXISTS `uke12db`.`tickets` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
-  `desc` VARCHAR(255) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `status` ENUM('Åpen', 'Lukket', 'Pågår') NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `status` ENUM('Open', 'Closed', 'Pending') NOT NULL,
   `created` DATETIME NOT NULL,
-  `userid` INT NOT NULL,
+  `userid` INT NULL,
+  `ticketscol` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_ticket_users_idx` (`userid` ASC) VISIBLE,
   CONSTRAINT `fk_ticket_users`
